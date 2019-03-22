@@ -1,5 +1,7 @@
 # dartin
 
+![](https://img.shields.io/badge/build-passing-brightgreen.svg) [![](https://img.shields.io/badge/pub-v0.0.1-blue.svg)](https://pub.dartlang.org/packages/dartin)  ![](https://img.shields.io/badge/support-dart|flutter-red.svg)
+
 A pragmatic lightweight dependency injection framework for Flutter developers.
 
  A light container inspired by [flutter-provide](https://github.com/google/flutter-provide) and [koin](https://github.com/InsertKoinIO/koin).
@@ -10,10 +12,8 @@ more examples see  [mvvm_flutter](https://github.com/ditclear/mvvm_flutter).
 
 ```yaml
 dependencies:
-  flutter:
-    sdk: flutter
-        
-  dartin:0.0.1
+  dartin: ^0.0.1
+  
 ```
 
 ### Key methods
