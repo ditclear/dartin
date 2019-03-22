@@ -26,7 +26,7 @@ dependencies:
    requestor of the value.
 - **inject<T>**：get T  from dartIns by T.runtimeType and params
 
-more infomations see [**dartin.dart**](https://github.com/ditclear/dartin/blob/master/lib/dartin.dart).
+more informations see [**dartin.dart**](https://github.com/ditclear/dartin/blob/master/lib/dartin.dart).
 
 ### Getting Started
 
@@ -70,12 +70,14 @@ void main() {
 ```dart
 //default
 final service = inject<GithubService>();
-//pass paramaters
+//pass parameters
 final test = inject<HomeProvide>(params: ['title']);
 //different scope
 final test = inject<HomeProvide>(scope:test,params: ['title']);
 
 ```
+
+DartIn is easy to use, and still improving.
 
 🍺 welcome to fork and pull request。
 
