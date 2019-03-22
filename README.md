@@ -6,7 +6,7 @@ A pragmatic lightweight dependency injection framework for Flutter developers.
 
 more examples see  [mvvm_flutter](https://github.com/ditclear/mvvm_flutter).
 
-#### Setup
+### Setup
 
 ```yaml
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   dartin:0.0.1
 ```
 
-#### Key methods
+### Key methods
 
 - **single**：Creates a provider with the value provided to it.
 - **lazy**：Creates a provider which will initialize using the [_DartInFunction]
@@ -26,11 +26,11 @@ dependencies:
    requestor of the value.
 - **inject<T>**：get T  from dartIns by T.runtimeType and params
 
-more infomations see **dartin.dart**.
+more infomations see [**dartin.dart**](https://github.com/ditclear/dartin/blob/master/lib/dartin.dart).
 
-#### Getting Started
+### Getting Started
 
-1. ##### declare  dartin modules
+1. #### declare  dartin modules
 
 ```dart
 //scope should always be initialized as a static const and passed around.
@@ -56,7 +56,7 @@ final appModule = [viewModelModule, repoModule, remoteModule];
 
 ```
 
-2. ##### Start dartin
+2. #### Start dartin
 
 ```dart
 void main() {
@@ -65,7 +65,7 @@ void main() {
 }
 ```
 
-3. ##### inject
+3. #### inject
 
 ```dart
 //default
@@ -79,6 +79,6 @@ final test = inject<HomeProvide>(scope:test,params: ['title']);
 
 🍺 welcome to fork and pull request。
 
-#### Licence
+### Licence
 
 BSD
