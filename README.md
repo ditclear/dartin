@@ -39,7 +39,7 @@ const test = DartInScope('test');
 final viewModelModule = Module([
   factory<HomeProvide>(({params}) => HomeProvide(params.get(0), get<GithubRepo>())),
 ])
-  ..addOthers(test , [
+  ..withScope(test , [
     ///other scope
    factory<HomeProvide>(({params}) => HomeProvide(params.get(0), get<GithubRepo>())),
   ]);

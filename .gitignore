@@ -18,3 +18,6 @@ ios/Runner/GeneratedPluginRegistrant.*
 .idea/libraries/Dart_SDK.xml
 .idea/libraries/Flutter_Plugins.xml
 .idea/markdown-navigator/profiles_settings.xml
+example/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+example/ios/Runner/GeneratedPluginRegistrant.h
+example/ios/Runner/GeneratedPluginRegistrant.m

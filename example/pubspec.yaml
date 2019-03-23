@@ -1,0 +1,15 @@
+name: example
+description: an example for dartin
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dartin:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

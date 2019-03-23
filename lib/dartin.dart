@@ -171,9 +171,8 @@ class _LazyDartIn<T> with _TypedDartIn<T> {
   T get({List params}) {
     // Need to have a local copy for casting because
     // dart requires it.
-    T value;
     if (_value == null) {
-      value = _value ??= _initalizer(params: _ParameterList.parametersOf(params));
+      _value = _initalizer(params: _ParameterList.parametersOf(params));
     }
     return _value;
   }
@@ -204,7 +203,7 @@ class Module {
   }
 
   /// dependencies in otherScope
-  void addOthers(DartInScope otherScope, List<DartIn> others) {
+  void withScope(DartInScope otherScope, List<DartIn> others) {
     assert(otherScope._name != DartIns.defaultScope._name);
     _providerIns[otherScope] = others ??= [];
   }
@@ -214,9 +213,7 @@ class Module {
 class _ParameterList {
   final List<Object> params;
 
-  /**
-   * get element at given index
-   */
+  /// get element at given index
   get(int i) {
     if (params == null || i > params.length - 1 || i < 0) {
       return null;

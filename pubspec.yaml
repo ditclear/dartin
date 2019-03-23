@@ -1,6 +1,6 @@
 name: dartin
 description: A pragmatic lightweight dependency injection framework for Flutter developers.
-version: 0.0.1
+version: 0.1.0
 author: ditclear <ditclear@qq.com>
 homepage: https://github.com/ditclear/dartin
 

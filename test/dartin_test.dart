@@ -1,7 +1,7 @@
 import 'package:dartin/dartin.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'dummy.dart';
+import '../example/lib/dummy.dart';
 
 void main() {
 
@@ -14,10 +14,10 @@ void main() {
   final m = Module([
     single<Dummy>(dummy1),
   ])
-    ..addOthers(other, [
+    ..withScope(other, [
       single<Dummy>(dummy2),
     ])
-    ..addOthers(params, [
+    ..withScope(params, [
       factory<Dummy>(({params}) => Dummy(params.get(0))),
     ]);
 
