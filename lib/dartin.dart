@@ -37,7 +37,9 @@ class DartIns {
   /// Creates a provider with the included providers.
   ///
   /// If a scope is provided, the values will be under that scope.
-  factory DartIns.withDartIns(Map<Type, DartIn<dynamic>> providers, {DartInScope scope}) => DartIns()..provideAll(providers, scope: scope);
+  factory DartIns.withDartIns(Map<Type, DartIn<dynamic>> providers,
+          {DartInScope scope}) =>
+      DartIns()..provideAll(providers, scope: scope);
 
   /// Add a provider for a single type.
   ///
@@ -102,7 +104,8 @@ class DartIns {
     return getFromType<T>(scope: scope)?.get(params: params);
   }
 
-  Map<Type, DartIn<dynamic>> _providersForScope(scope) => _providers[scope ?? defaultScope] ??= {};
+  Map<Type, DartIn<dynamic>> _providersForScope(scope) =>
+      _providers[scope ?? defaultScope] ??= {};
 }
 
 /// A DartIn provides a value on request.
@@ -134,7 +137,8 @@ abstract class DartIn<T> {
 
   /// Creates a provider that provides a new value for each
   /// requestor of the value.
-  factory DartIn._withFactory(_DartInFunction<T> function) => _FactoryDartIn<T>(function);
+  factory DartIn._withFactory(_DartInFunction<T> function) =>
+      _FactoryDartIn<T>(function);
 }
 
 /// Base mixin for providers.
@@ -189,7 +193,8 @@ class _FactoryDartIn<T> with _TypedDartIn<T> {
   _FactoryDartIn(this.providerFunction);
 
   @override
-  T get({List params}) => providerFunction(params: _ParameterList.parametersOf(params));
+  T get({List params}) =>
+      providerFunction(params: _ParameterList.parametersOf(params));
 }
 
 /// Module Definition
@@ -226,7 +231,8 @@ class _ParameterList {
 
 /// Creates a provider that provides a new value using the [_DartInFunction] for each
 /// requestor of the value.
-DartIn<T> factory<T>(_DartInFunction<T> value, {String scope}) => DartIn<T>._withFactory(value);
+DartIn<T> factory<T>(_DartInFunction<T> value, {String scope}) =>
+    DartIn<T>._withFactory(value);
 
 /// Creates a provider with the value provided to it.
 DartIn<T> single<T>(T value) => DartIn<T>._value(value);
@@ -238,13 +244,15 @@ DartIn<T> lazy<T>(_DartInFunction<T> value) => DartIn<T>._lazy(value);
 /// get T  from dartIns by T.runtimeType and params
 T get<T>({DartInScope scope, List params}) {
   assert(_dartIns != null, "error: please use startDartIn method first ");
-  final result = _dartIns.value<T>(scope: scope ?? DartIns.defaultScope, params: params);
+  final result =
+      _dartIns.value<T>(scope: scope ?? DartIns.defaultScope, params: params);
   assert(result != null, "error: not found $T in ${scope.toString()}");
   return result;
 }
 
 /// get T  from dartIns by T.runtimeType and params
-T inject<T>({DartInScope scope, List params}) => get<T>(scope: scope, params: params);
+T inject<T>({DartInScope scope, List params}) =>
+    get<T>(scope: scope, params: params);
 
 /// global dependencies 's container in App
 DartIns _dartIns;
