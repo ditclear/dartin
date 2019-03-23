@@ -12,7 +12,7 @@ more examples see  [mvvm_flutter](https://github.com/ditclear/mvvm_flutter).
 
 ```yaml
 dependencies:
-  dartin: ^0.0.1
+  dartin: ^0.1.0
   
 ```
 
