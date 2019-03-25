@@ -1,6 +1,6 @@
 # dartin
 
-![](https://img.shields.io/badge/build-passing-brightgreen.svg) [![](https://img.shields.io/badge/pub-v0.0.1-blue.svg)](https://pub.dartlang.org/packages/dartin)  ![](https://img.shields.io/badge/support-dart|flutter-red.svg)
+![](https://img.shields.io/badge/build-passing-brightgreen.svg) [![](https://img.shields.io/badge/pub-v0.1.0-blue.svg)](https://pub.dartlang.org/packages/dartin)  ![](https://img.shields.io/badge/support-dart|flutter-red.svg)
 
 A pragmatic lightweight dependency injection framework for Flutter developers.
 
