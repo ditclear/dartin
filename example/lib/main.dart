@@ -11,14 +11,15 @@ final dummy2 = Dummy(2);
 
 //define module
 final m = Module([
-  single<Dummy>(dummy1),
+  single<Dummy>(({params}) =>  dummy1 ),
 ])
   ..withScope(other, [
-    single<Dummy>(dummy2),
+    single<Dummy>(({params}) =>  dummy2 ),
   ])
   ..withScope(params, [
     factory<Dummy>(({params}) => Dummy(params.get(0))),
   ]);
+
 
 main() {
 

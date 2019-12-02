@@ -12,14 +12,13 @@ more examples see  [mvvm_flutter](https://github.com/ditclear/mvvm_flutter).
 
 ```yaml
 dependencies:
-  dartin: ^0.1.0
+  dartin: ^0.1.5
   
 ```
 
 ### Key methods
 
-- **single**：Creates a provider with the value provided to it.
-- **lazy**：Creates a provider which will initialize using the [_DartInFunction]
+- **single**：Creates a provider which will initialize using the [_DartInFunction]
   the first time the value is requested.
 
 - **factory**：Creates a provider that provides a new value using the [_DartInFunction] for each
@@ -45,11 +44,11 @@ final viewModelModule = Module([
   ]);
 
 final repoModule = Module([
-  lazy<GithubRepo>(({params}) => GithubRepo(get<GithubService>())),
+  single<GithubRepo>(({params}) => GithubRepo(get<GithubService>())),
 ]);
 
 final remoteModule = Module([
-  single<GithubService>(GithubService()),
+  single<GithubService>(({params}) => GithubService()),
 ]);
 
 final appModule = [viewModelModule, repoModule, remoteModule];

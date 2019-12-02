@@ -87,12 +87,6 @@ class DartIns {
     }
   }
 
-  /// Syntactic sugar around adding a value based provider.
-  ///
-  ///  If no [scope] is passed in, the default one will be used.
-  void provideValue<T>(T value, {DartInScope scope}) {
-    provide(DartIn._value(value), scope: scope);
-  }
 
   /// get DartIn from Type,maybe null
   DartIn<T> getFromType<T>({DartInScope scope}) {
@@ -125,15 +119,12 @@ abstract class DartIn<T> {
   /// The type that is provided by the provider.
   Type get type;
 
-  /// Creates a provider with the value provided to it.
-  factory DartIn._value(T value) => _ValueDartIn(value);
-
   /// Creates a provider which will initialize using the [_DartInFunction]
   /// the first time the value is requested.
   ///
   /// The context can be used to obtain other values from the provider. However,
   /// care should be taken with this to not have circular dependencies.
-  factory DartIn._lazy(_DartInFunction<T> function) => _LazyDartIn<T>(function);
+  factory DartIn._single(_DartInFunction<T> function) => _SingleDartIn<T>(function);
 
   /// Creates a provider that provides a new value for each
   /// requestor of the value.
@@ -148,28 +139,18 @@ abstract class _TypedDartIn<T> implements DartIn<T> {
   Type get type => T;
 }
 
-/// Contains a value which will never be disposed.
-class _ValueDartIn<T> extends _TypedDartIn<T> {
-  final T _value;
-
-  @override
-  T get({List params}) => _value;
-
-  _ValueDartIn(this._value);
-}
-
 /// Function that returns an instance of T when called.
 typedef _DartInFunction<T> = T Function({_ParameterList params});
 
 /// Is initialized on demand, and disposed when no longer needed
 /// if [dispose] is set to true.
 /// When obtained statically, the value will never be disposed.
-class _LazyDartIn<T> with _TypedDartIn<T> {
+class _SingleDartIn<T> with _TypedDartIn<T> {
   final _DartInFunction<T> _initalizer;
 
   T _value;
 
-  _LazyDartIn(this._initalizer);
+  _SingleDartIn(this._initalizer);
 
   @override
   T get({List params}) {
@@ -234,12 +215,10 @@ class _ParameterList {
 DartIn<T> factory<T>(_DartInFunction<T> value, {String scope}) =>
     DartIn<T>._withFactory(value);
 
-/// Creates a provider with the value provided to it.
-DartIn<T> single<T>(T value) => DartIn<T>._value(value);
 
 /// Creates a provider which will initialize using the [_DartInFunction]
 /// the first time the value is requested.
-DartIn<T> lazy<T>(_DartInFunction<T> value) => DartIn<T>._lazy(value);
+DartIn<T> single<T>(_DartInFunction<T> value) => DartIn<T>._single(value);
 
 /// get T  from dartIns by T.runtimeType and params
 T get<T>({DartInScope scope, List params}) {
